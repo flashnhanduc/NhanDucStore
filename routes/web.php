@@ -38,11 +38,6 @@ Route::middleware('auth')->group(function () {
 });
    
 
-    
-
-
-
-
 Route::get('/admin/orders/list',[OrderController::class ,'list_order'] );
 Route::get('/admin/orders/detail/{order_detail}',[OrderController::class ,'detail_order'] );
 Route::post('/upload',[UploadController::class,'uploadImage']);

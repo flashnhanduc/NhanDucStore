@@ -47,6 +47,7 @@ class CardController extends Controller
         $provinces = Province::all();
         return view('cart', compact('products', 'provinces'));
     }
+    
     public function delete_cart(Request $request){
         $cart = Session::get('cart');
         $product_id = $request -> id ;

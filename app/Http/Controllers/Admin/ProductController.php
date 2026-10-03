@@ -48,7 +48,7 @@ class ProductController extends Controller
         $product = Products::find($request -> id);
         return view('admin.product.edit',[
             'title'=> 'Tên Sản Phẩm',
-            'product' =>$product
+            'product' => $product
         ]);
     }
     public function update_product (Request $request) {
