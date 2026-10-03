@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     public function list_order(){
-        $order = Order::all();
+        $orders = Order::orderBy('id', 'desc')->paginate(10);
         return view('admin.orders.list',[
-            'orders' => $order
+            'orders' => $orders
         ]);
     }
    public function detail_order(Request $request){

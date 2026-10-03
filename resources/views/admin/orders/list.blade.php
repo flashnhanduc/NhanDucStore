@@ -18,15 +18,15 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($orders as $order)
+                @foreach ($orders as $key => $order)
                      <tr>
-                    <td>{{  $order -> id }}</td>
+                    <td>{{  $orders->firstItem() + $key }}</td>
                     <td>{{  $order -> name }}</td>
                     <td>{{  $order -> phone }}</td>
                     <td>{{  $order -> email }}</td>
                     <td>{{  $order -> address }},{{  $order -> ward }},{{  $order -> city }}</td>
                     <td>{{  $order -> note }}</td>
-                    <td><a class="edit-class" href="/admin/orders/detail/{{  $order -> order_detail  }}">Chi Tiet</a></td>
+                    <td><a class="edit-class" href="/admin/orders/detail/{{  $order -> order_detail  }}">Chi Tiết</a></td>
                     <td>{{  $order -> created_at}}</td>
                     <td><a class="nou_confirm-order" href="">Chưa Xác Nhận</a></td>
                     <td>
@@ -34,10 +34,10 @@
                     </td>
                 </tr>
                 @endforeach
-               
-               
-
             </tbody>
         </table>
+        <div class="mt-4 d-flex justify-content-end">
+            {{ $orders->links() }}
+        </div>
     </div>
 @endsection

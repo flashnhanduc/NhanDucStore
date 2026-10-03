@@ -330,52 +330,135 @@ a {
     background-color: blueviolet;
     padding: 12px 0 ;
 }
-/* order-list */
-.admin-content-main-content-order-list table {
+/* order-list *//* =========================================
+   BẢNG DANH SÁCH (ĐƠN HÀNG & SẢN PHẨM)
+========================================= */
+.admin-content-main-content-order-list table,
+.admin-content-main-content-product-list table {
     width: 100%;
-    padding: 12px 0;
     border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Đổ bóng nhẹ cho bảng nổi lên */
+    border-radius: 8px; /* Bo góc bảng */
+    overflow: hidden; /* Giữ cho góc bo không bị tràn */
+    margin-top: 15px;
 }
-.admin-content-main-content-order-list a {
-    display: inline-block;
-}
-.admin-content-main-content-order-list table,th,td {
 
+/* Định dạng Tiêu đề cột (th) - Sửa lỗi tác động toàn trang */
+.admin-content-main-content-order-list table th,
+.admin-content-main-content-product-list table th {
+    background-color: #f8f9fa; /* Màu xám nhạt hiện đại thay vì màu tím gắt */
+    color: #333;
+    padding: 15px 12px;
     text-align: center;
-    
+    border-bottom: 2px solid #e9ecef; /* Kẻ đường viền dưới tiêu đề */
+    font-weight: 600;
 }
-.admin-content-main-content-order-list table th {
-    background-color: blueviolet;
-    padding: 12px 0 ;
-    text-align: center;
 
-}
-.admin-content-main-content-order-list table td {
-    
-    padding: 12px 0 ;
-}
-.admin-content-main-content-product-list img {
-    margin: 8px; 
-}
-.admin-content-main-content-product-list table th,
+/* Định dạng Ô dữ liệu (td) */
+.admin-content-main-content-order-list table td,
 .admin-content-main-content-product-list table td {
+    padding: 12px;
     text-align: center;
     vertical-align: middle;
-}
-#input-file-img,.input-file-imgs {
-    padding: 12px o ;
-}
-#input-file-img img {
-    width: 200px; 
-    border-radius: 5px;
-}
-#input-file-imgs img {
-    width: 200px; 
-    border-radius: 5px;
-    margin: 10px ;
+    border-bottom: 1px solid #f1f3f5;
+    color: #495057;
 }
 
+/* Hiệu ứng hover khi rê chuột ngang qua từng hàng dữ liệu */
+.admin-content-main-content-order-list table tbody tr:hover,
+.admin-content-main-content-product-list table tbody tr:hover {
+    background-color: #f1f8ff; /* Nổi vệt màu xanh nhạt cực kỳ pro */
+}
 
+/* Fix lỗi thẻ a */
+.admin-content-main-content-order-list a,
+.admin-content-main-content-product-list a {
+    display: inline-block;
+}
+
+/* Định dạng ảnh trong bảng */
+.admin-content-main-content-order-list img,
+.admin-content-main-content-product-list img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover; /* Thuộc tính thần thánh chống méo ảnh */
+    border-radius: 5px;
+    border: 1px solid #ddd; /* Viền mỏng bao quanh ảnh */
+}
+
+/* =========================================
+   PHẦN INPUT TẢI ẢNH (CREATE / EDIT)
+========================================= */
+#input-file-img, 
+.input-file-imgs {
+    padding: 12px 0; /* Đã sửa chữ 'o' thành số 0 */
+}
+
+#input-file-img img, 
+.input-file-imgs img {
+    width: 150px; 
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px dashed #ccc; /* Khung viền đứt khúc nhìn giống khu vực Upload */
+    margin: 10px 10px 0 0;
+    padding: 3px;
+}
+
+/* 1. Ẩn hoàn toàn thanh phân trang phía trên (Mobile) */
+.admin-content-main-content-order-list nav .d-sm-none {
+    display: none !important;
+}
+
+/* 2. Ép hiển thị thanh phân trang phía dưới (PC) */
+.admin-content-main-content-order-list nav .d-none.d-sm-flex {
+    display: flex !important;
+    justify-content: space-between; /* Đẩy dòng chữ sang trái, các nút số sang phải */
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+/* 3. Tút tát lại các nút bấm số 1, 2, 3 cho đồng bộ với Admin */
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 5px; /* Khoảng cách giữa các nút */
+}
+
+.page-item .page-link {
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+/* Nút đang được chọn (Active) */
+.page-item.active .page-link {
+    background-color: darkslateblue; /* Lấy theo màu main-bg-color của bạn */
+    color: white;
+    border-color: darkslateblue;
+}
+
+/* Nút bị vô hiệu hóa (Ví dụ: nút Previous ở trang 1) */
+.page-item.disabled .page-link {
+    color: #bbb;
+    background-color: #f8f9fa;
+    cursor: not-allowed;
+}
+
+/* Hiệu ứng rê chuột */
+.page-item:not(.active):not(.disabled) .page-link:hover {
+    background-color: #f2f7fb;
+    border-color: #ccc;
+}
 
 
 @keyframes notification {

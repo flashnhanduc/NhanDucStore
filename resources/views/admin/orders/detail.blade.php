@@ -10,7 +10,7 @@
                     <th>Giá</th>
                     <th>Số Lượng</th>
                     <th>Thành Tiền</th>
-                    <th>Tuy Bien</th>
+                    <th>Tùy Biến</th>
                 </tr>
             </thead>
             <tbody>

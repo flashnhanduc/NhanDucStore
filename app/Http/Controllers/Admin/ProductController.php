@@ -15,7 +15,7 @@ class ProductController extends Controller
         ]);
     }
      public function list_product (){
-        $product = DB::table('products') -> paginate(10);
+        $product = DB::table('products', 'desc') -> paginate(10);
         return view('admin.product.list',[
             'title'=>'Danh Sách Sản Phẩm',
             'products' => $product,

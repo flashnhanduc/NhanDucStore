@@ -18,7 +18,7 @@
                 </div>
                 <div class="admin-content-main">
                     <div class="admin-content-title">
-                        <h1>{{ isset($title)? $title : 'Dashboard' }}</h1>
+                        <h1>{{ isset($title)? $title : 'Danh Sách Đơn Hàng' }}</h1>
                     </div>
                     <div class="admin-content-main-content">
                         {{-- Nội dung nằm ở đây --}}
