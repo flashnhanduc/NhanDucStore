@@ -253,7 +253,7 @@ footer{
     color: #666;
     margin: 0;
     text-decoration: none; /* Bỏ gạch chân mặc định của thẻ a */
-    transition: all 0.3s ease; /* Làm mượt hiệu ứng chuyển động */
+    transition: all 0.3s ease; /* Làm mượt hiệu ứng chuyển động */ 
 }
 
 /* 5. HIỆU ỨNG KHI DI CHUỘT (HOVER) */

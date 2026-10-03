@@ -6,7 +6,7 @@
 </div>
 <div class="admin-sidebar-content">
     <ul>
-        <li><a href=""><i class="ri-dashboard-line"></i>Dasbord<i class="ri-file-add-line"></i></a>
+        <li><a href=""><i class="ri-dashboard-line"></i>Dashboard<i class="ri-file-add-line"></i></a>
             <ul class="sub-menu">
                 <div class="sub-menu-items">
                     <li><a href=""><i class="ri-arrow-right-s-fill"></i>Thống Kê</a></li>

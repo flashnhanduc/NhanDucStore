@@ -6,7 +6,7 @@
     --main-bg-color: darkslateblue;
     --sub-bg-color: #f2f7fb;
     --top-height: 70px;
-    --main-transition: all 0.3 ease;
+    --main-transition: all 0.3s ease; /* Đã thêm chữ 's' để animation hoạt động */
     --main-border-radius: 5px;
     --main-font-family: "Open Sans", sans-serif;
 }
@@ -24,118 +24,142 @@ a {
     color: unset;
 }
 
-.li {
-    list-style: none;
-}
-
-.main-btn {
-    padding: 10px 12px;
-    background-color: black;
+/* =========================================
+   NÚT BẤM (BUTTONS) - ĐÃ CHUẨN HÓA
+========================================= */
+/* Dồn các thuộc tính chung vào một nhóm để code gọn hơn */
+.main-btn, .delete-class, .edit-class, .confirm-order, .nou_confirm-order {
+    padding: 6px 12px;
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: var(--main-border-radius);
+    transition: var(--main-transition);
+    font-size: 14px;
+    display: inline-block;
 }
-.delete-class{
-    padding: 3px;
-    background-color: red;
-    color: white;
-    border-radius: 5px;
-}
-.edit-class{
-    padding: 3px;
-    background-color: green;
-    color: white;
-    border-radius: 5px;
 
+.main-btn {
+    background-color: #2c3e50;
+    padding: 10px 15px; /* Nút chính to hơn chút */
+}
+.delete-class, .nou_confirm-order {
+    background-color: #e74c3c; /* Đỏ san hô, nhìn hiện đại hơn red thuần */
+}
+.edit-class {
+    background-color: #2ecc71; /* Xanh lá mượt mà */
 }
 .confirm-order {
-     padding: 3px;
-    background-color: rgb(169, 34, 135);
-    color: white;
-    border-radius: 5px;
+    background-color: #9b59b6; /* Tím thanh lịch thay vì rgb gắt */
 }
-.nou_confirm-order {
-     padding: 3px;
-    background-color: red;
-    color: white;
-    border-radius: 5px;
+
+/* Hiệu ứng hover cho tất cả các nút */
+.main-btn:hover, .delete-class:hover, .edit-class:hover, .confirm-order:hover, .nou_confirm-order:hover {
+    filter: brightness(0.85); /* Tự động tối màu đi một chút khi hover */
+    transform: translateY(-1px); /* Nẩy nhẹ lên */
 }
-/* main-admin */
+
+/* =========================================
+   BỐ CỤC CHUNG (LAYOUT)
+========================================= */
 .row-grid {
     display: grid;
     justify-content: space-between;
 }
 
 .admin .row-grid {
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 250px 1fr; /* Set cứng Sidebar 250px, nội dung chiếm phần còn lại sẽ chuẩn hơn dùng % */
 }
-
-/* sidebar */
-.admin-sidebar {
-    height: 100vh;
-    background-color: var(--main-bg-color);
-
-}
-
-.admin-sidebar-top {
-    text-align: center;
-    height: var(--top-height);
-    border-bottom: 1px solid gray;
-}
-
-.admin-sidebar-top img {
-    width: 50px;
-    border-radius: 12px;
-}
-
-.admin-sidebar-content {
-    padding: 30px 0 0 30px;
-    color: whitesmoke;
-}
-
-.admin-sidebar-content>ul>li>a {
-    width: 100%;
-    display: block;
-    display: flex;
-    justify-content: flex-start;
-}
-
-.admin-sidebar-content>ul>li>a i:last-child {
-    margin-left: auto;
-}
-
-.admin-sidebar-content ul li a i {
-    margin-right: 6px;
-}
-
-.admin-sidebar-content ul li {
-    padding: 6px;
-    transition: var(--main-transition);
-}
-
-.admin-sidebar-content ul li:hover {
-    background-color: cornflowerblue;
-}
-
-.sub-menu {
-    height: 0;
-    overflow: hidden;
-    transition: var(--main-transition);
-}
-
 .flex-box {
     display: flex;
 }
 
-/* .sub-menu.active {
-   height: 50px;
-} */
-.sub-menu li:hover a {
-    color: brown;
-
+/* =========================================
+   SIDEBAR ADMIN
+========================================= */
+.admin-sidebar {
+    height: 100vh;
+    background-color: var(--main-bg-color);
+    position: sticky; /* Giúp sidebar trượt theo màn hình nếu nội dung dài */
+    top: 0;
 }
 
+.admin-sidebar-top {
+    height: var(--top-height);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Viền xám mờ tinh tế hơn */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-sidebar-top img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* Bo tròn hẳn logo nhìn pro hơn */
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.admin-sidebar-content {
+    padding-top: 20px;
+    color: whitesmoke;
+}
+
+/* Định dạng các mục menu chính */
+.admin-sidebar-content ul li {
+    transition: var(--main-transition);
+}
+
+.admin-sidebar-content > ul > li > a {
+    width: 100%;
+    display: flex; /* Đã xóa display: block thừa thãi */
+    align-items: center;
+    padding: 12px 20px;
+    font-size: 15px;
+}
+
+.admin-sidebar-content > ul > li > a i:last-child {
+    margin-left: auto;
+}
+
+.admin-sidebar-content ul li a i {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+/* Hover menu chính */
+.admin-sidebar-content > ul > li:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-left: 4px solid #3498db; /* Thêm vệt sáng bên trái cực kỳ hiện đại */
+}
+
+/* =========================================
+   SUB-MENU (MENU CON) 
+========================================= */
+.sub-menu {
+    max-height: 0; /* Dùng max-height thay vì height để menu xổ xuống mượt dù có bao nhiêu mục */
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background-color: rgba(0, 0, 0, 0.2); /* Nền menu con tối hơn nền chính */
+}
+
+.sub-menu.active {
+    max-height: 300px; /* Tự động mở rộng tối đa 300px */
+}
+
+.sub-menu li a {
+    display: block;
+    padding: 10px 20px 10px 45px; /* Đẩy chữ thụt lề */
+    font-size: 14px;
+    color: #cbd5e1;
+    transition: var(--main-transition);
+}
+
+/* Đổi màu hover của menu con: Dùng màu trắng sáng và đẩy nhẹ sang phải thay vì màu Nâu */
+.sub-menu li:hover a {
+    color: #ffffff;
+    transform: translateX(5px);
+}
 /* admin-content */
 .admin-content {
     background-color: var(--sub-bg-color);
