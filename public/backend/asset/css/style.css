@@ -391,28 +391,31 @@ a {
    PHẦN INPUT TẢI ẢNH (CREATE / EDIT)
 ========================================= */
 #input-file-img, 
-.input-file-imgs {
-    padding: 12px 0; /* Đã sửa chữ 'o' thành số 0 */
+#input-file-imgs {
+    padding: 12px 0; 
 }
 
 #input-file-img img, 
-.input-file-imgs img {
+#input-file-imgs img {
     width: 150px; 
     height: 150px;
     object-fit: cover;
     border-radius: 8px;
-    border: 2px dashed #ccc; /* Khung viền đứt khúc nhìn giống khu vực Upload */
+    border: 2px dashed #ccc; 
     margin: 10px 10px 0 0;
     padding: 3px;
+    display: inline-block; /* Giúp các ảnh sản phẩm nằm ngang hàng nhau */
 }
 
 /* 1. Ẩn hoàn toàn thanh phân trang phía trên (Mobile) */
-.admin-content-main-content-order-list nav .d-sm-none {
+.admin-content-main-content-order-list nav .d-sm-none,
+.admin-content-main-content-product-list nav .d-sm-none {
     display: none !important;
 }
 
 /* 2. Ép hiển thị thanh phân trang phía dưới (PC) */
-.admin-content-main-content-order-list nav .d-none.d-sm-flex {
+.admin-content-main-content-order-list nav .d-none.d-sm-flex,
+.admin-content-main-content-product-list nav .d-none.d-sm-flex {
     display: flex !important;
     justify-content: space-between; /* Đẩy dòng chữ sang trái, các nút số sang phải */
     align-items: center;
@@ -420,7 +423,10 @@ a {
     margin-top: 15px;
     font-size: 14px;
 }
-
+.admin-content-main-content-order-list nav .d-none.d-sm-flex > div:first-child,
+.admin-content-main-content-product-list nav .d-none.d-sm-flex > div:first-child {
+    display: none !important;
+}
 /* 3. Tút tát lại các nút bấm số 1, 2, 3 cho đồng bộ với Admin */
 .pagination {
     display: flex;

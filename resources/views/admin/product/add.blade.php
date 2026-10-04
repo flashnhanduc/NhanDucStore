@@ -25,7 +25,7 @@
 
                     </div>
                 </div>
-                <div class="admin-content-main-content-right-images">
+                <div class="admin-content-main-content-right-image">
                     <label for="files">Ảnh Sản phẩm </label>
                     <input style="display: none;" id="files" type="file" multiple>
                     <div class="images-show" id="input-file-imgs">

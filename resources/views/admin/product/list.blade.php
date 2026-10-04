@@ -14,9 +14,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($products as $product)
+                @foreach ($products as $key => $product)
                     <tr>
-                        <td>{{ $product->id }}</td>
+                        <td>{{ $products->firstItem() + $key }}</td>
                         <td><img style="width: 70px;" src="{{asset($product->image)}}" alt=""></td>
                         <td>{{ $product->name}}</td>
                         <td>{{ number_format($product->price_normal)}}</td>
@@ -32,5 +32,8 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="mt-4 d-flex justify-content-end">
+            {{ $products->links() }}
+        </div>
     </div>
 @endsection
