@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Models\Products;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -26,7 +26,7 @@ class OrderController extends Controller
     // Hoặc nếu là mảng ID đơn giản:
     // $product_id = $order_detail;
 
-    $products = Products::whereIn('id', $product_id)->get();
+    $products = Product::whereIn('id', $product_id)->get();
 
     return view('admin.orders.detail', [
         'products' => $products,

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Products;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,7 +22,7 @@ class ProductController extends Controller
         ]);
     }
     public function insert_product (Request $request){
-        $products = new Products();
+        $products = new Product();
         $products -> name = $request -> input('name');
         $products -> material = $request -> input('material');
         $products -> price_normal = $request -> input('price_normal');
@@ -37,7 +37,7 @@ class ProductController extends Controller
 
     }
     public function delete_product (Request $request){
-       Products::find($request ->product_id) -> delete() ;
+       Product::find($request ->product_id) -> delete() ;
        return response()->json([
        'success' => true
        
@@ -45,14 +45,14 @@ class ProductController extends Controller
 
     } 
     public function edit_product ( Request $request){
-        $product = Products::find($request -> id);
+        $product = Product::find($request -> id);
         return view('admin.product.edit',[
             'title'=> 'Tên Sản Phẩm',
             'product' => $product
         ]);
     }
     public function update_product (Request $request) {
-        $products = products::find($request -> id);
+        $products = product::find($request -> id);
         $products -> name = $request -> input('name');
         $products -> material = $request -> input('material');
         $products -> price_normal = $request -> input('price_normal');

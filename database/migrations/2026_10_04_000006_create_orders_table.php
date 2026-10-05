@@ -13,16 +13,15 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table-> string('name')->nullable();
-            $table-> string('phone')->nullable();
-            $table-> string('email')->nullable();
-            $table-> string('city')->nullable();
-            $table-> string('district')->nullable();
-            $table-> string('ward')->nullable();
-            $table-> string('address')->nullable();
-            $table-> string('note')->nullable();
-            $table->string('order_detail')->nullable();
-            $table->string('status')->default(0);
+            $table->string('name');
+            $table->string('phone', 20);
+            $table->string('email')->nullable();
+            $table->string('address');
+            $table->string('ward')->nullable();
+            $table->string('city')->nullable();
+            $table->text('note')->nullable();
+            $table->integer('total_money'); // Lưu tổng giá trị hóa đơn
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }

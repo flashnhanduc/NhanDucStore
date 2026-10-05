@@ -7,5 +7,8 @@ use Illuminate\Notifications\Notifiable;
 
 class Order extends Model
 {
-    use Notifiable;
+    public function details()
+    {
+        return $this->hasMany(OrderDetail::class); 
+    }
 }
