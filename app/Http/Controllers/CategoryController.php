@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Products;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
     public function index() {
-        $products = Products::all();
+        $products = Product::all();
         return view ('home',[
             'products' =>  $products 
         ]);
@@ -16,14 +16,14 @@ class CategoryController extends Controller
     }
      public function showHotProducts()
     {
-        $products = Products::all();
+        $products = Product::all();
         return view('parts.hotproduct', 
         ['products' => $products]);
     }
 
     public function show_product (Request $request){
-        $product = Products::find($request -> id );
-        $products = Products::latest()->limit(4)->get(); 
+        $product = Product::find($request -> id );
+        $products = Product::latest()->limit(4)->get(); 
         return view ('product',[
             'product' => $product,
             'products' => $products

@@ -90,10 +90,10 @@ class DatabaseSeeder extends Seeder
                     'total' => $total
                 ]);
 
-                $totalMoney += $total; // Cộng dồn vào tổng hóa đơn
+                $totalMoney += $total; 
             }
 
-            // Update lại tổng tiền chính xác cho đơn hàng
+            // Update lại tổng tiền 
             $order->update(['total_money' => $totalMoney]);
         }
     }
