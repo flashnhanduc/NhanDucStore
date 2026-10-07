@@ -7,6 +7,7 @@
                     <th>ID</th>
                     <th>Ảnh</th>
                     <th>Tên Sản Phẩm</th>
+                    <th>Danh Mục</th> <!-- Hiển thị thêm danh mục cho chuyên nghiệp -->
                     <th>Giá Bán</th>
                     <th>Giá Giảm</th>
                     <th>Ngày Đăng</th>
@@ -17,16 +18,17 @@
                 @foreach ($products as $key => $product)
                     <tr>
                         <td>{{ $products->firstItem() + $key }}</td>
-                        <td><img style="width: 70px;" src="{{asset($product->image)}}" alt=""></td>
-                        <td>{{ $product->name}}</td>
-                        <td>{{ number_format($product->price_normal)}}</td>
-                        <td>{{number_format($product->price_sale)}}</td>
-                        <td>{{ $product->created_at}}</td>
+                        <td><img style="width: 70px;" src="{{ asset($product->image) }}" alt=""></td>
+                        <td>{{ $product->name }}</td>
+                        <td>{{ $product->category->name ?? 'Trống' }}</td>
+                        <td>{{ number_format($product->price) }} đ</td>
+                        <td>{{ number_format($product->price_sale) }} đ</td>
+                        <td>{{ $product->created_at->format('d/m/Y') }}</td>
                         <td>
-                            <a href="/admin/product/edit/{{ $product->id }}" class="edit-class" href="">Sửa</a>
+                            <a href="{{ route('admin.products.edit', $product->id) }}" class="edit-class">Sửa</a>
                             |
-                            <a onclick="removeRow( product_id = {{ $product->id }} ,url='/admin/product/delete')"
-                                class="delete-class" href="#">Xóa</a>
+                            <a onclick="removeRow({{ $product->id }}, '{{ route('admin.products.destroy', $product->id) }}')" 
+                               class="delete-class" >Xóa</a>
                         </td>
                     </tr>
                 @endforeach

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\SentMail;
 use App\Models\Order;
-use App\Models\Products;
+use App\Models\Product;
 use App\Models\Province;
 use App\Notifications\EmailNotification;
 use Illuminate\Http\Request;
@@ -43,7 +43,7 @@ class CardController extends Controller
     public function show_cart(){
         $cart = Session::get('cart');
         $product_id = array_keys($cart);
-        $products = Products::whereIn('id', $product_id)->get();
+        $products = Product::whereIn('id', $product_id)->get();
         $provinces = Province::all();
         return view('cart', compact('products', 'provinces'));
     }
