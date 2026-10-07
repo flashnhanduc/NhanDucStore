@@ -2,26 +2,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Order; // Nhớ use Model Order
+use App\Models\Order; 
+
 
 class OrderController extends Controller
 {
-    // Hiển thị danh sách đơn hàng
-    public function index() {
-        // Lấy danh sách, sắp xếp mới nhất lên đầu, phân trang 10 dòng
+   public function index() {
         $orders = Order::orderBy('id', 'desc')->paginate(10);
+        $title = 'Danh Sách Đơn Hàng';
         
-        return view('admin.orders.list', [
-            'orders' => $orders
-        ]);
+        return view('admin.orders.list', compact('title', 'orders'));
     }
 
-    // Xem chi tiết hóa đơn
-    public function detail($id) {
+    public function show($id) {
         $order = Order::with('details.variant.product')->findOrFail($id);
+        $title = 'Chi Tiết Đơn Hàng ' . $order->id;
 
-        return view('admin.orders.detail', [
-            'order' => $order
-        ]);
+        return view('admin.orders.detail', compact('title', 'order'));
+    }
+
+    public function destroy($id) {
+        $order = Order::find($id);
+        if ($order) {
+            $order->details()->delete(); 
+            $order->delete();
+            
+            return response()->json(['success' => true]);
+        }
+        return response()->json(['success' => false], 404);
     }
 }

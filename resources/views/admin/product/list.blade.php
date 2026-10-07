@@ -7,7 +7,7 @@
                     <th>ID</th>
                     <th>Ảnh</th>
                     <th>Tên Sản Phẩm</th>
-                    <th>Danh Mục</th> <!-- Hiển thị thêm danh mục cho chuyên nghiệp -->
+                    <th>Danh Mục</th> 
                     <th>Giá Bán</th>
                     <th>Giá Giảm</th>
                     <th>Ngày Đăng</th>

@@ -16,7 +16,7 @@
         <li><a href=""><i class="ri-file-list-line"></i></i>Đơn Hàng<i class="ri-file-add-line"></i></a>
             <ul class="sub-menu">
                 <div class="sub-menu-items">
-                    <li><a href="/admin/orders/list"><i class="ri-arrow-right-s-fill"></i>Danh Sách</a></li>
+                    <li><a href="{{ route('admin.orders.index') }}"><i class="ri-arrow-right-s-fill"></i>Danh Sách</a></li>
                 </div>
             </ul>
         </li>

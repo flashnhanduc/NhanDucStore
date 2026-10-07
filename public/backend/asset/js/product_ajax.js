@@ -58,18 +58,25 @@ $('#files').on('change', () => {
     })
 })
 function removeRow(product_id, url) {
-    if (confirm('Are You Sure')) {
+    if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')) {
         $.ajax({
             url: url,
-            data: { product_id },
-            method: 'GET',
+            method: 'DELETE', 
+            data: { 
+                _token: $('meta[name="csrf-token"]').attr('content') 
+            },
             dataType: 'JSON',
             success: function (res) {
-            if(res.success == true){
-                location.reload();
+                if(res.success == true) {
+                    location.reload();
+                } else {
+                    alert('Lỗi: Không thể xóa sản phẩm này!');
+                }
+            },
+            error: function (xhr) {
+                alert('Có lỗi hệ thống xảy ra. Vui lòng kiểm tra lại F12.');
             }
-            }
-        })
+        });
     }
 }
 
