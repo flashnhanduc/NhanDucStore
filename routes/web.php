@@ -7,7 +7,18 @@ use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 
+use App\Http\Controllers\CardController;
+
 Route::get('/', [CategoryController::class, 'index']);
+Route::get('/product/{id}', [CategoryController::class, 'show_product']);
+Route::post('/cart/add', [CardController::class, 'add_cart']);
+Route::get('/cart', [CardController::class, 'show_cart']);
+Route::get('/cart/delete/{id}', [CardController::class, 'delete_cart']);
+Route::post('/cart/update', [CardController::class, 'update_cart']);
+Route::post('/cart/send', [CardController::class, 'send_order']);
+Route::get('/order/confirm', function () {
+    return view('order.confirm');
+});
 
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', function () {

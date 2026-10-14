@@ -1,23 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
-    @include('parts.head')
+    @include('partials.head')
 </head>
 
 <body>
     <header id="header">
-        @include('parts.header')
+        @include('partials.header')
     </header>
    {{-- content --}}
    @yield('content')
    
-    <!-- hotProducts -->
-   {{-- @include('parts.hotproduct') --}}
-    <!-- popullar-product  -->
-    @include('parts.popullarproduct')
+
     <footer>
-        @include('parts.footer')
+        @include('partials.footer')
 
     </footer>
 
